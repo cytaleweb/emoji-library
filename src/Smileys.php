@@ -1,5 +1,5 @@
 <?php
-namespace iksaku\EmojiLibrary;
+namespace iksaku\Emoji;
 
 /**
  * Class Smileys

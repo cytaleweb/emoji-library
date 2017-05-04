@@ -1,7 +1,7 @@
 {
-    "name": "iksaku/EmojiLibrary",
+    "name": "iksaku/emoji-library",
     "description": "A PHP Library containing the latest (approved) Emoji codes.",
-    "homepage": "https://github.com/iksaku/EmojiLibrary",
+    "homepage": "https://github.com/iksaku/emoji-library",
     "license": "MIT",
     "authors": [
         {
@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "iksaku\\EmojiLibrary\\": "src/iksaku/EmojiLibrary"
+            "iksaku\\Emoji\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "iksaku\\EmojiLibrary\\": "src/iksaku/EmojiLibrary"
+            "iksaku\\Emoji\\": "src"
         }
     }
 }

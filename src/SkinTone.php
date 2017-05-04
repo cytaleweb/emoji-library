@@ -1,5 +1,5 @@
 <?php
-namespace iksaku\EmojiLibrary;
+namespace iksaku\Emoji;
 
 class SkinTone {
     const LIGHT = "\u{1F3FB}";

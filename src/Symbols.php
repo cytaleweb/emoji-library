@@ -1,5 +1,5 @@
 <?php
-namespace iksaku\EmojiLibrary;
+namespace iksaku\Emoji;
 
 class Symbols {
     const HEART = "\u{2764}";
