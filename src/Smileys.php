@@ -107,6 +107,10 @@ class Smileys {
     const MUSCLE = "\u{1F4AA}";
     
     // ...
+
+    const EYES = "\u{1F440}";
+    
+    // ...
     
     const PERSON_BOWING = "\u{1F647}";
     
