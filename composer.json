@@ -1,6 +1,6 @@
 {
     "name": "iksaku/emoji-library",
-    "description": "PHP Library containing latest (approved) Emoji charset.",
+    "description": "A PHP Library containing the latest (approved) Emoji codes.",
     "license": "MIT",
     "authors": [
         {
