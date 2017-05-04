@@ -1,0 +1,19 @@
+{
+    "name": "iksaku/emoji-library",
+    "description": "PHP Library containing latest (approved) Emoji charset.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jorge Gonzálsz",
+            "email": "iksaku@me.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emoji\\": "src/iksaku/emoji-library/"
+        }
+    }
+}
