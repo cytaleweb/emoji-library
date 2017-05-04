@@ -109,4 +109,12 @@ class Smileys {
     // ...
     
     const PERSON_BOWING = "\u{1F647}";
+    
+    // ...
+
+    const MAN_FACEPALMING = "\u{1F926}";
+    
+    // ...
+
+    const MAN_SHRUGGING = "\u{1F937}\u{200D}\u{2642}\u{FE0F}";
 }
