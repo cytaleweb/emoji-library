@@ -1,19 +1,25 @@
 {
-    "name": "iksaku/emoji-library",
+    "name": "iksaku/EmojiLibrary",
     "description": "A PHP Library containing the latest (approved) Emoji codes.",
+    "homepage": "https://github.com/iksaku/EmojiLibrary",
     "license": "MIT",
     "authors": [
         {
-            "name": "Jorge Gonzálsz",
+            "name": "Jorge González",
             "email": "iksaku@me.com"
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": ">=7.0"
     },
     "autoload": {
         "psr-4": {
-            "Emoji\\": "src/iksaku/emoji-library/"
+            "iksaku\\EmojiLibrary\\": "src/iksaku/EmojiLibrary"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "iksaku\\EmojiLibrary\\": "src/iksaku/EmojiLibrary"
         }
     }
 }

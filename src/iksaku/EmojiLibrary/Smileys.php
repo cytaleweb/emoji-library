@@ -1,6 +1,10 @@
 <?php
-namespace Emoji;
+namespace iksaku\EmojiLibrary;
 
+/**
+ * Class Smileys
+ * @package Emoji
+ */
 class Smileys {
     const GRINNING = "\u{1F600}";
     const SMILEY = "\u{1F603}";
