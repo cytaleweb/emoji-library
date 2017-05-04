@@ -7,7 +7,7 @@ class Symbols {
     const GREEN_HEART = "\u{1F49A}";
     const BLUE_HEART = "\u{1F499}";
     const PURPLE_HEART = "\u{1F49C}";
-    const BLACK_HEART = "\u{1F54A4}";
+    const BLACK_HEART = "\u{1F5A4}";
     const BROKEN_HEART = "\u{1F494}";
     const HEART_EXCLAMATION = "\u{2763}";
     const TWO_HEARTS = "\u{1F495}";
