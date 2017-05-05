@@ -116,9 +116,14 @@ class Smileys {
     
     // ...
 
-    const MAN_FACEPALMING = "\u{1F926}";
+    const MAN_FACEPALMING = "\u{1F926}" . Gender::MALE;
     
     // ...
 
-    const MAN_SHRUGGING = "\u{1F937}\u{200D}\u{2642}\u{FE0F}";
+    const MAN_SHRUGGING = "\u{1F937}" . Gender::MALE;
+}
+
+class Gender {
+    const MALE = "\u{200D}\u{2642}\u{FE0F}";
+    const FEMALE = "\u{200d}\u{2640}\u{FE0F}";
 }

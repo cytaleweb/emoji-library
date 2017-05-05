@@ -12,32 +12,36 @@ class SkinTone {
      * NOTE: Be sure to only apply it to emojis that support skin tone modifiers,
      *  otherwise, unicode characters may break.
      *
-     * How do this function applies the Skin Tone to the Emoji?
-     *  We treat unicode characters as strings, split them and insert the skin tone modifier
-     *  to get the emoji with the (correctly) applied skin tone.
+     * How does this function correctly applies the Skin Tone to the Emoji?
+     *  Every emoji is represented with a unique codepoint, but you can also add extra codepoints to
+     *  define a gender or skin tone.
      *
-     * In order to use unicode characters as strings (since PHP7 no longer treats them as strings),
-     * so firstly we encode both emoji and skin tone modifier into JSON string.
+     * With that in mind, we must know first if the emoji is part of the unisex types (no gender assigned)
+     *  or if there is a gender modifier present.
+     * Skin tone must be defined before the gender is, so we must place the skin tone modifier between
+     *  emoji's codepoint and the gender modifier.
      *
-     * After that, we are going to split JSON unicode parts into a PHP array.
-     *  NOTE2: JSON codes are not the same as standard unicode ones...
-     *
-     * Next, we will insert the skin tone in the correct position of the array.
-     *
-     * Finally, we merge the string back to JSON string format and decode back to PHP string,
-     *  so we can output it as an emoji with a correctly applied skin tone.
+     * First, and if there is a gender modifier assigned, we split the emoji and the gender in two different variables.
+     *  Otherwise, we just skip this step.
+     * Next, we merge the skin tone modifier with the emoji codepoint, and, if there was a
+     *  gender modifier assigned originally, we merge the gender modifier into the codepoint sequence.
+     * Finally, we return the merged codepoints.
      *
      * @param string $skinTone
      * @param string $emoji
      * @return string
      */
-    public static function applyTo(string $skinTone, string $emoji){
-        $emoji = explode("\\", str_replace("\"", "", json_encode($emoji)));
-        $skinTone = explode("\\", str_replace("\"", "", json_encode($skinTone)));
-        array_shift($skinTone); // Remove Empty string form array start
+    public static function apply(string $skinTone, string $emoji) : string
+    {
+        $gender = "";
+        foreach ([Gender::MALE, Gender::FEMALE] as $g){
+            if (stripos($emoji, $g) === false) continue;
 
-        array_splice($emoji, 3, 0, $skinTone);
+            $gender = $g;
+            $emoji = str_replace($g, "", $emoji);
+            break;
+        }
 
-        return json_decode("\"" . implode("\\", $emoji) . "\"", true);
+        return $emoji . $skinTone . $gender;
     }
 }
