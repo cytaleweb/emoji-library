@@ -35,7 +35,7 @@ class SkinTone {
     {
         $gender = "";
         foreach ([Gender::MALE, Gender::FEMALE] as $g){
-            if (stripos($emoji, $g) === false) continue;
+            if (!stripos($emoji, $g)) continue;
 
             $gender = $g;
             $emoji = str_replace($g, "", $emoji);
