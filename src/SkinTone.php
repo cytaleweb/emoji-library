@@ -9,6 +9,9 @@ class SkinTone {
     const DARK = "\u{1F3FF}";
 
     /**
+     * WARNING: If you pass a sequence of emojis in a single string,
+     *  this function will change all skin tones of those emojis.
+     *
      * NOTE: Be sure to only apply it to emojis that support skin tone modifiers,
      *  otherwise, unicode characters may break.
      *
@@ -19,13 +22,17 @@ class SkinTone {
      * With that in mind, we must know first if the emoji is part of the unisex types (no gender assigned)
      *  or if there is a gender modifier present.
      * Skin tone must be defined before the gender is, so we must place the skin tone modifier between
-     *  emoji's codepoint and the gender modifier.
+     *  emoji's codepoint and the gender modifier (if there is going to be a gender modifier).
      *
-     * First, and if there is a gender modifier assigned, we split the emoji and the gender in two different variables.
-     *  Otherwise, we just skip this step.
-     * Next, we merge the skin tone modifier with the emoji codepoint, and, if there was a
-     *  gender modifier assigned originally, we merge the gender modifier into the codepoint sequence.
-     * Finally, we return the merged codepoints.
+     * First of all, we check if there is a skin tone modifier already assigned, if so, we will replace it with
+     *  the newly requested skin tone.
+     * If there is no skin tone modifier assigned already, we will look into gender modifier.
+     *  If there is a gender modifier assigned, we will place the skin tone modifier between the actual emoji
+     *  and the gender modifier.
+     * If there are neither skin tone nor gender modifiers, we just place the requested skin tone modifier
+     *  right after the emoji.
+     *
+     * Finally, we return the merged sequence of modifiers with the emoji.
      *
      * @param string $skinTone
      * @param string $emoji
@@ -33,15 +40,20 @@ class SkinTone {
      */
     public static function apply(string $skinTone, string $emoji) : string
     {
-        $gender = "";
-        foreach ([Gender::MALE, Gender::FEMALE] as $g){
-            if (!stripos($emoji, $g)) continue;
-
-            $gender = $g;
-            $emoji = str_replace($g, "", $emoji);
-            break;
+        foreach ([self::LIGHT, self::MEDIUM_LIGHT, self::MEDIUM, self::MEDIUM_DARK, self::DARK] as $pSkinTone) {
+            if (stripos($emoji, $pSkinTone)){
+                $emoji = str_replace($pSkinTone, $skinTone, $emoji);
+                break;
+            }
         }
 
-        return $emoji . $skinTone . $gender;
+        foreach ([Gender::MALE, Gender::FEMALE] as $gender){
+            if (stripos($emoji, $gender)) {
+                $emoji = str_replace($gender, $skinTone . $gender, $emoji);
+                break;
+            }
+        }
+
+        return $emoji . $skinTone;
     }
 }
