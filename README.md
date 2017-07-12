@@ -22,4 +22,5 @@ Emoji codes are available via constant variables in different classes, each repr
  - Objects (TO DO...)
  - Symbols (TO DO...)
  - Flags (TO DO...)
-Also, skin tone modifiers are available
+ 
+Also, skin tone modifiers are available 
